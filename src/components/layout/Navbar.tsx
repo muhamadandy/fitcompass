@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Button from "../ui/Button";
+import { useAuth } from "../../context/AuthContext";
+import { UserButton } from "@neondatabase/neon-js/auth/react";
 
 const Navbar = () => {
-  const user = false;
+  const {user} = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-md">
@@ -14,6 +16,7 @@ const Navbar = () => {
           className="flex items-center gap-2 transition-opacity hover:opacity-80"
         >
           <img src={logo} alt="logo" className="h-8 w-auto object-contain" />
+          <span className="font-semibold">FitCompass</span>
         </Link>
 
         {/* Nav */}
@@ -25,6 +28,8 @@ const Navbar = () => {
                   My Plan
                 </Button>
               </Link>
+
+              <UserButton />
             </>
           ) : (
             <>
